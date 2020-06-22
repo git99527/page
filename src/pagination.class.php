@@ -50,6 +50,7 @@ class Pagination {
   public $hasNextMore = false;
 
   public $containerClassName = '';
+  public $ulClassName = '';//ul class
 
   function __construct ($total, $pageSize = 10) {
     $this->total = abs($total);
@@ -181,7 +182,7 @@ class Pagination {
   // 页码部分html
   private function pagerHTML () {
     $pagers = $this->pager();
-    $htmls = ['<ul class="m-pager">'];
+    $htmls = ['<ul class="m-pager'. ($this->ulClassName ? ' '. $this->ulClassName : '') .'">'];//增加ul class
     $pagerCountOffset = $this->pagerCount - 2;
 
     if ($this->pageCount > 0) {
